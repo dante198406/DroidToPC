@@ -1,0 +1,40 @@
+/**
+ * Author: quhuabo
+ *   date: 2019-01-23
+ *   desc: 一些通信指令
+ */
+
+syntax = "proto3";
+
+package com.erobbing.adb_config_demo;
+
+
+enum ErrorCode {
+    OK = 0;
+    COMMON_ERROR = 1;
+
+    UNKNOWN_CMD = 100;
+}
+
+enum Cmd {
+    cmd_dummy = 0;
+    cmdReadConfig = 1; // 从设备端获取设置
+
+    cmdWriteConfig = 2; // 保存设置到设备端
+
+    cmdRegisterBox = 3; // 箱注册
+    cmdUnregisterBox = 4; // 箱注销
+
+    cmdUnregisterKey = 5; // 扣注销
+
+}
+
+// 每个通讯的数据内容，根据需要获取或设置某(几)个参数值
+message Config {
+    int32 errorCode = 1; // 0: OK; 其他值：错误码
+    string boxID = 2; // 箱ID
+    string keyID = 3; // 钥匙扣ID
+    string shopID = 4; // 店ID
+    bool boxRegisted = 5; // 箱是否注册
+
+};

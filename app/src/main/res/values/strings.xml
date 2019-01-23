@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">PC管理软件服务</string>
+    <string name="notification_description">PC管理软件服务</string>
+
+    <integer-array name="video_sizes_index">
+        <!--720p-->
+        <item>0</item>
+        <!--1080p-->
+        <item>1</item>
+    </integer-array>
+
+    <string-array name="video_sizes">
+        <item>1280x720</item>
+        <item>1920x1080</item>
+    </string-array>
+
+</resources>
