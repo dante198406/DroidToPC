@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'com.google.protobuf'
+apply plugin: 'com.google.protobuf'
 
 android {
     compileSdkVersion 25
@@ -18,6 +18,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            proto {
+                srcDir 'src/main/java/com/erobbing/adb_config_demo/proto'
+                include '*.proto'
+            }
+            java {
+                //srcDir 'src/main/java/com/erobbing/adb_config_demo/proto'
+                srcDir 'src/main/java'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -28,7 +41,29 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:25.+'
     compile 'com.google.protobuf:protobuf-java:3.4.0'
+    compile 'com.google.protobuf:protoc:3.1.0'
     compile 'org.apache.commons:commons-lang3:3.5'
 }
 
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.1.0'
+    }
 
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                remove java
+            }
+            task.builtins {
+                java {}
+                // Add cpp output without any option.
+                // DO NOT omit the braces if you want this builtin to be added.
+                cpp {}
+            }
+        }
+    }
+    //generatedFilesBaseDir = "$projectDir/src/generated"
+    //DroidToPC/app/src/generated/debug/java/com/erobbing/adb_config_demo
+    generatedFilesBaseDir = "$projectDir/src/main/java/com/erobbing/adb_config_demo/proto"
+}

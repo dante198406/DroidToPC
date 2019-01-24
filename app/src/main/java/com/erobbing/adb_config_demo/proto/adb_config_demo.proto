@@ -36,7 +36,7 @@ message Config {
     string keyID = 3; // 钥匙扣ID
     string shopID = 4; // 店ID
     bool boxRegisted = 5; // 箱是否注册
-	string prov = 6; // 省
-	string city = 7; // 市
+	string provinceID = 6; // 省
+	string cityID = 7; // 市
 	string manufacturerID = 8; // 制造商
 };
