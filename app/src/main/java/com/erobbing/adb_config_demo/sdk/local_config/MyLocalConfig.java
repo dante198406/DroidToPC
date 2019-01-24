@@ -44,6 +44,9 @@ public class MyLocalConfig extends LocalConfigServer {
                     builder.setBoxID(sp.getString("box_id", ""));
                     builder.setShopID(sp.getString("shop_id", ""));
                     builder.setKeyID(sp.getString("key_id", ""));
+                    builder.setProvinceID(sp.getString("province_id", ""));
+                    builder.setCityID(sp.getString("city_id", ""));
+                    builder.setManufacturerID(sp.getString("manufacturer_id", ""));
 
                     // TODO: 设置其他值
 
@@ -65,6 +68,9 @@ public class MyLocalConfig extends LocalConfigServer {
                     ed.putString("shop_id", config.getShopID());
                     ed.putString("box_id", config.getBoxID());
                     ed.putString("key_id", config.getKeyID());
+                    ed.putString("province_id", config.getProvinceID());
+                    ed.putString("city_id", config.getCityID());
+                    ed.putString("manufacturer_id", config.getManufacturerID());
                     ed.commit();
 
                     // TODO: 保存其他值
